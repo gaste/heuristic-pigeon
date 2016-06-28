@@ -1,10 +1,14 @@
 # Pigeonhole Heuristic 
-A heuristic for the pigeonhole problem implemented using the Python heuristic
-interface of [WASP](https://github.com/alviano/wasp).
+A heuristic for the pigeonhole problem implemented using the Python
+heuristic interface of [WASP](https://github.com/alviano/wasp).
 
 ## Usage
-Use the heuristic together with [HWASP](https://github.com/Yarrick13/hwasp)
-on the heuristic branch. To run the heuristic on the sample instance, execute
+Use the heuristic together with [WASP](https://github.com/alviano/wasp)
+on the `plugins` branch, compiled with `make SCRIPT=python`. To run the
+heuristic on the sample instance, execute
 ```
-gringo pigeonhole-encoding.asp pigeonhole-sample-instance.asp | hwasp --heuristic-interpreter=python --heuristic-scriptname=heuristic
+# ground the instance
+gringo pigeonhole-encoding.asp pigeonhole-sample-instance.asp > sample.gringo
+# call the solver using the python heuristic 
+cat sample.gringo | wasp --heuristic-interpreter=python --heuristic-scriptname=heuristic
 ```
